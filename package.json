@@ -1,0 +1,19 @@
+{
+  "name": "sync",
+  "version": "1.0.0",
+  "description": "Sync photos on a rush conf and many photographers",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/othree/sync.git"
+  },
+  "author": "othree",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/othree/sync/issues"
+  },
+  "homepage": "https://github.com/othree/sync#readme"
+}
