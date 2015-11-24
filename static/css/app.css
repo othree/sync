@@ -5,10 +5,6 @@ html, body {
   font-family: 'Roboto', sans-serif;
 }
 
-#panel {
-  padding: 0.5em 1em;
+#app {
+  padding: 40px;
 }
-
-#meta > div {
-}
-

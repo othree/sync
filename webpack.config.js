@@ -17,10 +17,14 @@ module.exports = {
 	module: {
 		loaders: [
       { test: /\.html$/, loader: "html" },
+      {
+        test: /\.less$/,
+        loader: "style!css!less"
+      },
 			{
 				test: /\.jsx?$/,
 				exclude: /(node_modules|bower_components)/,
-				loader: 'babel'
+				loader: 'babel!react-map-styles'
 			}
 		]
 	}

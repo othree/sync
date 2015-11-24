@@ -1,67 +1,78 @@
 
 import React from 'react';
 
-import { AppBar, IconButton, TextField, RaisedButton } from 'material-ui';
-import Checkbox from 'material-ui/lib/checkbox';
-import DatePicker from 'material-ui/lib/date-picker/date-picker';
-import MonochromePhotos from 'material-ui/lib/svg-icons/image/monochrome-photos';
+import { Form, Input, Button, Radio, message, Row, Col, InputNumber, Datepicker } from 'antd';
+const FormItem = Form.Item;
+const RadioGroup = Radio.Group;
 
 var Main = React.createClass({
   render() {
     return (
       <div>
-        <AppBar title="Sync" 
-          iconElementLeft={ <IconButton><MonochromePhotos /></IconButton> }
-        />
-        <div id="panel">
-          <form id="meta">
-            <div>
-              <TextField
-                hintText="COSCUP"
-                floatingLabelText="Event Name" />
-            </div>
-            <div>
-              <TextField
-                hintText="coscup2015"
-                floatingLabelText="Event ID" />
-              <span style={{padding: '0 0.5em'}}>Day</span>
-              <span style={{width: '1em', display: 'inline-block'}}>
-                <TextField fullWidth={true} inputStyle={{textAlign: 'right'}} />
-              </span>
-              <span style={{padding: '0 0.5em 12px 1em', display: 'inline-block', verticalAlign: 'bottom'}}>
-                <Checkbox
-                  name="sync_yesterday"
-                  value="1"
-                  label="Sync Yesterday"
-                  labelStyle={{whiteSpace: 'nowrap'}} />
-              </span>
-            </div>
-            <div>
-              <TextField
-                hintText="/tmp/"
-                floatingLabelText="Path" />
-            </div>
-            <div>
-              <DatePicker
-                hintText="2015/06/12"
-                floatingLabelText="Date"
-                labelStyle={{zIndex: '0'}}
-                mode="landscape"/>
-            </div>
-            <div>
-              <TextField
-                hintText="%a-%t-%n.%e"
-                defaultValue="%a-%t-%n.%e"
-                floatingLabelText="Filename" />
-              <span style={{padding: '0 0.5em 12px 1em', display: 'inline-block', verticalAlign: 'bottom'}}>
-                %a: author, %t: time, %n: sn, %e: ext
-              </span>
-            </div>
-            <div className="buttons">
-              <RaisedButton label="Hello World!" primary={true} />
-            </div>
-          </form>
-        </div>
+        <Form horizontal>
+          <FormItem
+            id="eventName"
+            label="Event Name："
+            labelCol={{span: 4}}
+            wrapperCol={{span: 18}}>
+            <Input placeholder="COSCUP 2015" id="eventName" name="eventName" />
+          </FormItem>
+          <FormItem
+            id="eventID"
+            label="Event ID："
+            labelCol={{span: 4}}
+            wrapperCol={{span: 20}}>
+            <Row>
+              <Col span="12">
+                <Input placeholder="coscup2015" id="eventID" name="eventID" />
+              </Col>
+              <Col span="2">
+                <span className="ant-form-split">Day</span>
+              </Col>
+              <Col span="4">
+                <InputNumber size="large" placeholder="1" id="eventDay" name="eventDay" />
+              </Col>
+            </Row>
+          </FormItem>
+          <FormItem
+            id="syncYesterday"
+            label="Yesterday："
+            labelCol={{span: 4}}
+            wrapperCol={{span: 20}}>
+            <RadioGroup id="syncYesterday" defaultValue="sync">
+              <Radio value="sync">Sync</Radio>
+              <Radio value="not-sync">skip</Radio>
+            </RadioGroup>
+          </FormItem>
+          <FormItem
+            id="path"
+            label="Save Path："
+            labelCol={{span: 4}}
+            wrapperCol={{span: 15}}>
+            <Input placeholder="/tmp/" id="path" name="path" />
+          </FormItem>
+          <FormItem
+            id="date"
+            label="Today："
+            labelCol={{span: 4}}
+            wrapperCol={{span: 8}}>
+            <Datepicker id="today" />
+          </FormItem>
+          <FormItem
+            id="fileName"
+            label="File Name："
+            labelCol={{span: 4}}
+            wrapperCol={{span: 20}}>
+            <Row>
+              <Col span="8">
+                <Input placeholder="%a-%t-%n.%e" id="fileName" name="eventID" />
+              </Col>
+              <Col span="16">
+                <span className="ant-form-text" style={{textIndent: '0.5em'}}>%a: author, %t: time, %n, sn, %e: extension</span>
+              </Col>
+            </Row>
+          </FormItem>
+        </Form>
       </div>
     );
   }
